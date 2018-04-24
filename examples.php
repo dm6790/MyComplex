@@ -46,8 +46,8 @@ $data_table = $example_table = "";
 
 foreach ($data as $i => $row)
 {
-    $example_table .= "<tr  height='20px' align='right'><td align='center'>" . ($i + 1) ."</td>";
-    $data_table    .= "<tr  height='20px' align='right'><td align='center'>" . ($i + 1) ."</td>";
+    $example_table .= "<tr align='right' style='height: 20px;'><td align='center'>" . ($i + 1) ."</td>";
+    $data_table    .= "<tr align='right' style='height: 20px;'><td align='center'>" . ($i + 1) ."</td>";
     foreach ($row as $k => $val)
     {
         $td_attributes = '';
@@ -73,7 +73,7 @@ echo "ДАННЫЕ</br>";
 echo "
 <div style='border: #3c763d solid 1px; width: 240px'>
     <table width=240 cellspacing='0' border='1' style='font-size: smaller;'>
-        <tr height='20px' align='center'>
+        <tr align='center'  style='height: 20px;'>
             <td width='40px'>№</td>
             <td width='100px'>a</td>
             <td width='100px'>b</td>
@@ -84,7 +84,7 @@ echo "</br></br>РЕЗУЛЬТАТЫ</br>";
 echo "
 <div style='border: #3c763d solid 1px; width: 1400px'>
     <table width=100% cellspacing='0' border='1' style='font-size: smaller;'>
-        <tr height='20px' align='center'>
+        <tr align='center'  style='height: 20px;'>
             <td width='40px'>№</td>
             <td width='100px'>a</td>
             <td width='100px'>b</td>
