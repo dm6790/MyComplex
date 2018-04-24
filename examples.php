@@ -53,10 +53,11 @@ foreach ($data as $i => $row)
         $td_attributes = '';
         //if (is_a($val, 'MyComplex')) {
         if (is_a($val, 'MyC\MyComplex')) {
-            $str_val = $val->AsString();
+            $ToStr = 'AsString';
+            $str_val = $val->$ToStr();
             $td_attributes = ($str_val === "null") ?
                 (" title = '" . $val->err . "' bgcolor='#b22222' align='center' style='color: white'") :
-                (" title = '" . $val->AsString() . "'");
+                (" title = '" . $val->$ToStr() . "'");
         } elseif (is_null($val)) {
             $str_val = "null";
             $td_attributes = " title = 'null' bgcolor='#b22222' align='center' style='color: white'";
