@@ -24,21 +24,25 @@ $input = $data = array (
     array ('a'=>['5.2e-1',   -2], 'b'=>[ 5.5,        0]),
 );
 
+try {
+    foreach ($data as $i => $row) {
 
-foreach ($data as $i => $row)
-{
+        foreach ($row as $key => $col) $row[$key] = $$key = new MyComplex($col[0], $col[1]);
 
-    foreach ($row as $key => $col) $row[$key] = $$key = new MyComplex($col[0], $col[1]);
-
-    $data[$i] = array_merge($data[$i], array('a'    => $a));
-    $data[$i] = array_merge($data[$i], array('b'    => $b));
-    $data[$i] = array_merge($data[$i], array('mod'  => $a->mod()));
-    $data[$i] = array_merge($data[$i], array('conj' => MyComplex::conj($a)));
-    $data[$i] = array_merge($data[$i], array('inver'=> MyComplex::inver($a)));
-    $data[$i] = array_merge($data[$i], array('add'  => MyComplex::add($a, $b)));
-    $data[$i] = array_merge($data[$i], array('sub'  => MyComplex::sub($a, $b)));
-    $data[$i] = array_merge($data[$i], array('mult' => MyComplex::mult($a,$b)));
-    $data[$i] = array_merge($data[$i], array('dev'  => MyComplex::dev($a, $b)));
+        if (isset($a) && isset($b)) {
+            $data[$i] = array_merge($data[$i], array('a' => $a));
+            $data[$i] = array_merge($data[$i], array('b' => $b));
+            $data[$i] = array_merge($data[$i], array('mod' => $a->mod()));
+            $data[$i] = array_merge($data[$i], array('conj' => MyComplex::conj($a)));
+            $data[$i] = array_merge($data[$i], array('inver' => MyComplex::inver($a)));
+            $data[$i] = array_merge($data[$i], array('add' => MyComplex::add($a, $b)));
+            $data[$i] = array_merge($data[$i], array('sub' => MyComplex::sub($a, $b)));
+            $data[$i] = array_merge($data[$i], array('mult' => MyComplex::mult($a, $b)));
+            $data[$i] = array_merge($data[$i], array('dev' => MyComplex::dev($a, $b)));
+        }
+    }
+} catch(Exception $e) {
+    die($e->getMessage());
 }
 //---------------------
 
@@ -54,7 +58,7 @@ foreach ($data as $i => $row)
         //if (is_a($val, 'MyComplex')) {
         if (is_a($val, 'MyC\MyComplex')) {
             $ToStr = 'AsString';
-            $str_val = $val->$ToStr();
+            $str_val = $val->$ToStr();      // <---- Вызов метода через переменную $ToStr
             $td_attributes = ($str_val === "null") ?
                 (" title = '" . $val->err . "' bgcolor='#b22222' align='center' style='color: white'") :
                 (" title = '" . $val->$ToStr() . "'");
