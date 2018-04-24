@@ -5,24 +5,41 @@
  * Date: 01.12.2017
  * Time: 16:01
  */
+
+define ("MIN", -20);
+define ("MAX",  20);
+
 require_once 'MyC/MyComplex.php';
 //require_once "vendor/autoload.php";
 use MyC\MyComplex;
 
 
 
-$input = $data = array (
-    array ('a'=>[ 2,          4], 'b'=>[-90,          10]),
-    array ('a'=>[-2,          4], 'b'=>[10, '-2.12e-1']),
-    array ('a'=>[ 0,          0], 'b'=>['-0.087e2',  6]),
-    array ('a'=>[-4,          2], 'b'=>[ 6,         -3]),
-    array ('a'=>[-1,         -4], 'b'=>[ 1,          3]),
-    array ('a'=>[ 0,        1.4], 'b'=>[ 2.6,      0.5]),
-    array ('a'=>[-2,          0], 'b'=>[ 0,        0.2]),
-    array ('a'=>['10',       10], 'b'=>[ 1,   -6.21e-1]),
-    array ('a'=>['1.232e2',   0], 'b'=>[ -12,       -2]),
-    array ('a'=>['5.2e-1',   -2], 'b'=>[ 5.5,        0]),
-);
+$data = array();
+
+for ($i=0 ; $i<=9; $i++) {
+    random_int(MIN, MAX);
+    array_push($data, array('a' => [random_int(MIN, MAX), random_int(MIN, MAX)],
+                            'b' => [random_int(MIN, MAX), random_int(MIN, MAX)]));
+}
+//-------------------------------------------------------------------------
+/*if (empty($_POST['data'])) {
+    $data = array (
+        array ('a'=>[ 2,          4], 'b'=>[-90,          10]),
+        array ('a'=>[-2,          4], 'b'=>[10, '-2.12e-1']),
+        array ('a'=>[ 0,          0], 'b'=>['-0.087e2',  6]),
+        array ('a'=>[-4,          2], 'b'=>[ 6,         -3]),
+        array ('a'=>[-1,         -4], 'b'=>[ 1,          3]),
+        array ('a'=>[ 0,        1.4], 'b'=>[ 2.6,      0.5]),
+        array ('a'=>[-2,          0], 'b'=>[ 0,        0.2]),
+        array ('a'=>['10',       10], 'b'=>[ 1,   -6.21e-1]),
+        array ('a'=>['1.232e2',   0], 'b'=>[ -12,       -2]),
+        array ('a'=>['5.2e-1',   -2], 'b'=>[ 5.5,        0]));
+} else {
+    $data = $_POST['data'];
+}*/
+//-------------------------------------------------------------------------
+$input = $data;
 
 try {
     foreach ($data as $i => $row) {
@@ -84,6 +101,9 @@ echo "
             <td width='100px'>b</td>
         </tr>". $data_table
     ."</table>
+</div>
+<div style='margin:10px 10px;'>
+    <button id='DataReset' style='height: 20px;' onClick=\"window.location.reload( true );\">Обновить данные</button>
 </div>";
 echo "</br></br>РЕЗУЛЬТАТЫ</br>";
 echo "
@@ -102,6 +122,11 @@ echo "
             <td>a / b</td>
         </tr>". $example_table
     ."</table>
-</div>";
+</div>
+<script src=\"http://code.jquery.com/jquery-3.3.1.slim.min.js\"
+        integrity=\"sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=\"
+        crossorigin=\"anonymous\">
+</script>
+<script src='JS/myscript.js'></script>";
 
 
