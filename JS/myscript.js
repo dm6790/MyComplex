@@ -1,6 +1,6 @@
 $(function(){
   $('button#DataReset').click(function(){
     alert('wow!');
-    //document.location.href='../examples.php';
+    document.location.href='../examples.php';
   });
 })

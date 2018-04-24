@@ -103,7 +103,7 @@ echo "
     ."</table>
 </div>
 <div style='margin:10px 10px;'>
-    <button id='DataReset' style='height: 20px;' onClick=\"window.location.reload( true );\">Обновить данные</button>
+    <button id='DataReset' style='height: 20px;'>Обновить данные</button>
 </div>";
 echo "</br></br>РЕЗУЛЬТАТЫ</br>";
 echo "
