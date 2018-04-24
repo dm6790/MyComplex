@@ -1,0 +1,8 @@
+{
+    "autoload": {
+        "psr-4": {"MyC\\": "/MyC/"},
+        "files": ["/examples.php"]
+    }
+
+}
+
